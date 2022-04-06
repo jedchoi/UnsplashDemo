@@ -14,3 +14,9 @@
 # 적용기술
 - UIKit(StoryBoard), Combine
 - Clean Architecture, VIPER(without presenter)
+
+# Architecture
+<img src=https://github.com/jedchoi/UnsplashDemo/blob/main/UnsplashDemoArchitecture.svg>
+
+# VIPER 
+<img src=https://github.com/jedchoi/UnsplashDemo/blob/main/UnsplashUIVIPER.svg>
