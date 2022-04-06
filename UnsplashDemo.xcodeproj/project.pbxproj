@@ -55,6 +55,7 @@
 		B1E123C927FC89F00001EA38 /* MainTabHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E123B327FC89F00001EA38 /* MainTabHome.storyboard */; };
 		B1E123CA27FC89F00001EA38 /* MainTabHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E123B427FC89F00001EA38 /* MainTabHomeInteractor.swift */; };
 		B1E123CB27FC89F00001EA38 /* MainTabHomeWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E123B527FC89F00001EA38 /* MainTabHomeWireFrame.swift */; };
+		B1E123CD27FDF1060001EA38 /* PhotoListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E123CC27FDF1050001EA38 /* PhotoListEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		B1E123B327FC89F00001EA38 /* MainTabHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabHome.storyboard; sourceTree = "<group>"; };
 		B1E123B427FC89F00001EA38 /* MainTabHomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabHomeInteractor.swift; sourceTree = "<group>"; };
 		B1E123B527FC89F00001EA38 /* MainTabHomeWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabHomeWireFrame.swift; sourceTree = "<group>"; };
+		B1E123CC27FDF1050001EA38 /* PhotoListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 		B1E1236F27FC86230001EA38 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				B1E123CC27FDF1050001EA38 /* PhotoListEntity.swift */,
 				B1E1237027FC86230001EA38 /* UnsplashAPIInterface.swift */,
 			);
 			path = Interface;
@@ -229,8 +232,8 @@
 		B1E1237127FC86230001EA38 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				B1E1237227FC86230001EA38 /* SearchPhotosUseCase.swift */,
 				B1E1237327FC86230001EA38 /* GetPhotoListUseCase.swift */,
+				B1E1237227FC86230001EA38 /* SearchPhotosUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -273,8 +276,8 @@
 				B1E1238627FC87F20001EA38 /* CommonContext.swift */,
 				B1E1238727FC87F20001EA38 /* ApplicationContext.swift */,
 				B1E1238827FC87F20001EA38 /* ProdApplicationContext.swift */,
-				B1E1238927FC87F20001EA38 /* Assembler.swift */,
 				B1E1238A27FC87F20001EA38 /* TestApplicationContext.swift */,
+				B1E1238927FC87F20001EA38 /* Assembler.swift */,
 			);
 			path = ApplicationContext;
 			sourceTree = "<group>";
@@ -282,10 +285,10 @@
 		B1E1239727FC89F00001EA38 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B1E1239827FC89F00001EA38 /* UnsplashPhotoDetail */,
+				B1E123AD27FC89F00001EA38 /* MainTabHome */,
 				B1E1239F27FC89F00001EA38 /* UnsplashPhotoList */,
 				B1E123A627FC89F00001EA38 /* UnsplashSearchList */,
-				B1E123AD27FC89F00001EA38 /* MainTabHome */,
+				B1E1239827FC89F00001EA38 /* UnsplashPhotoDetail */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -294,10 +297,10 @@
 			isa = PBXGroup;
 			children = (
 				B1E1239927FC89F00001EA38 /* CollectionViewCell */,
-				B1E1239B27FC89F00001EA38 /* UnsplashPhotoDetailInteractor.swift */,
-				B1E1239C27FC89F00001EA38 /* UnsplashPhotoDetail.storyboard */,
 				B1E1239D27FC89F00001EA38 /* UnsplashPhotoDetailViewController.swift */,
+				B1E1239B27FC89F00001EA38 /* UnsplashPhotoDetailInteractor.swift */,
 				B1E1239E27FC89F00001EA38 /* UnsplashPhotoDetailWireFrame.swift */,
+				B1E1239C27FC89F00001EA38 /* UnsplashPhotoDetail.storyboard */,
 			);
 			path = UnsplashPhotoDetail;
 			sourceTree = "<group>";
@@ -314,10 +317,10 @@
 			isa = PBXGroup;
 			children = (
 				B1E123A027FC89F00001EA38 /* CollectionViewCell */,
-				B1E123A227FC89F00001EA38 /* UnsplashPhotoList.storyboard */,
-				B1E123A327FC89F00001EA38 /* UnsplashPhotoListWireFrame.swift */,
-				B1E123A427FC89F00001EA38 /* UnsplashPhotoListInteractor.swift */,
 				B1E123A527FC89F00001EA38 /* UnsplashPhotoListViewController.swift */,
+				B1E123A427FC89F00001EA38 /* UnsplashPhotoListInteractor.swift */,
+				B1E123A327FC89F00001EA38 /* UnsplashPhotoListWireFrame.swift */,
+				B1E123A227FC89F00001EA38 /* UnsplashPhotoList.storyboard */,
 			);
 			path = UnsplashPhotoList;
 			sourceTree = "<group>";
@@ -355,9 +358,9 @@
 			children = (
 				B1E123AE27FC89F00001EA38 /* TempTabViews */,
 				B1E123B227FC89F00001EA38 /* MainTabHomeViewController.swift */,
-				B1E123B327FC89F00001EA38 /* MainTabHome.storyboard */,
 				B1E123B427FC89F00001EA38 /* MainTabHomeInteractor.swift */,
 				B1E123B527FC89F00001EA38 /* MainTabHomeWireFrame.swift */,
+				B1E123B327FC89F00001EA38 /* MainTabHome.storyboard */,
 			);
 			path = MainTabHome;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				B1E1239627FC87F30001EA38 /* UseCase.swift in Sources */,
 				B1E123BD27FC89F00001EA38 /* UnsplashPhotoListWireFrame.swift in Sources */,
 				B1E1238F27FC87F30001EA38 /* Error.swift in Sources */,
+				B1E123CD27FDF1060001EA38 /* PhotoListEntity.swift in Sources */,
 				B1E1238D27FC87F30001EA38 /* UIViewController.swift in Sources */,
 				B1E1238E27FC87F30001EA38 /* UIImageView.swift in Sources */,
 				B1E123B927FC89F00001EA38 /* UnsplashPhotoDetailViewController.swift in Sources */,

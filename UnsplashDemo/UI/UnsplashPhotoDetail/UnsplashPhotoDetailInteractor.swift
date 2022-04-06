@@ -10,7 +10,7 @@ import Combine
 
 protocol UnsplashPhotoDetailInteractorInputProtocol: AnyObject {
     func onViewDidLoad()
-    func itemDidSelect(id: String)
+    func itemDidSelect()
     func infoButtonTouched()
 }
 
@@ -35,8 +35,8 @@ extension UnsplashPhotoDetailInteractor: UnsplashPhotoDetailInteractorInputProto
         self.view.displayPhotoList(photos: self.photos, index: self.index)
     }
     
-    func itemDidSelect(id: String) {
-
+    func itemDidSelect() {
+        self.view.changeButtonVisible()
     }
     
     func infoButtonTouched() {

@@ -9,7 +9,7 @@ import Foundation
 
 class TestApplicationContext: CommonApplicationContext {
     override func configure() {
+        Logger.track()
         register({ FakeUnsplashAPIDataSource() as UnsplashAPIInterface })
-//        registerSingleton({ return UnsplashAPIService(dataSource: self.resolve()) as UnsplashAPIServiceInterface })
     }
 }

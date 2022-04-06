@@ -31,7 +31,6 @@ final class MainTabHomeViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureTabBarItem()
-        self.selectedIndex = 4
     }
 }
 

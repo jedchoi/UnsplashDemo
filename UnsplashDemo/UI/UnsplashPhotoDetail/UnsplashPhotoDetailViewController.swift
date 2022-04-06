@@ -15,6 +15,7 @@ protocol PhotoDetailFocusDelegate: AnyObject {
 protocol UnsplashPhotoDetailViewProtocol: AnyObject {
     // interactor -> View
     func displayPhotoList(photos: [PhotoEntity], index: Int)
+    func changeButtonVisible()
 }
 
 final class UnsplashPhotoDetailViewController: UIViewController {
@@ -67,24 +68,8 @@ extension UnsplashPhotoDetailViewController: UnsplashPhotoDetailViewProtocol {
         self.photos = photos
         self.currentIndex = index
     }
-}
 
-extension UnsplashPhotoDetailViewController: UICollectionViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            for cell in self.photoCollectionView.visibleCells {
-                guard let indexPath = self.photoCollectionView.indexPath(for: cell) else {
-                    return
-                }
-                Logger.track("\(indexPath)")
-                self.currentIndex = indexPath.item
-                self.navigationItem.title = self.photos[self.currentIndex].artistName
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func changeButtonVisible() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             let isHidden = !self.infoButton.isHidden
@@ -94,6 +79,24 @@ extension UnsplashPhotoDetailViewController: UICollectionViewDelegate {
                 self?.navigationController?.isNavigationBarHidden = isHidden
             }
         }
+    }
+}
+
+extension UnsplashPhotoDetailViewController: UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            for cell in self.photoCollectionView.visibleCells {
+                guard let indexPath = self.photoCollectionView.indexPath(for: cell) else { return }
+                Logger.track("\(indexPath)")
+                self.currentIndex = indexPath.item
+                self.navigationItem.title = self.photos[self.currentIndex].artistName
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        interactor.itemDidSelect()
     }
 }
 

@@ -11,6 +11,5 @@ class ProdApplicationContext: CommonApplicationContext {
     override func configure() {
         Logger.track()
         register({ UnsplashAPIDataSource() as UnsplashAPIInterface })
-//        registerSingleton({ UnsplashAPIService(dataSource: self.resolve()) as UnsplashAPIServiceInterface })
     }
 }

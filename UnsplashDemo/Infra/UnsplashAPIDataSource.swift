@@ -45,26 +45,18 @@ class UnsplashAPIDataSource: UnsplashAPIInterface {
     func getPhotoList(page: Int) -> AnyPublisher<PhotoListEntity, TraceError> {
         Logger.track()
         return URLSession.shared.dataTaskPublisher(for: getURL(type: .list_photo, page: page))
-            .print()
             .tryMap { data, response -> UnsplashSearchedData in
                 guard let httpURLResponse = response as? HTTPURLResponse,
                    let total = httpURLResponse.value(forHTTPHeaderField: "x-total") else {
                        throw URLError(.dataLengthExceedsMaximum)
                     }
-                Logger.track(total)
-                guard let total = Int(total) else {
-                    Logger.track("total convert int error")
-                    throw TraceError(message: "total convert int error", code: "")
-                }
-                
-                
+ 
                 let decoder = JSONDecoder()
-                guard let photos = try? decoder.decode([UnsplashPhoto].self, from: data) else {
-                    throw TraceError(message: "photo parse error", code: "")
+                guard let total = Int(total), let photos = try? decoder.decode([UnsplashPhoto].self, from: data) else {
+                    Logger.track("total, photo convert int error")
+                    throw TraceError(message: "total convert or photo parse error", code: "")
                 }
-                Logger.track("\(photos)")
                 return UnsplashSearchedData(total_photos: total, total_pages: total/10, photos: photos)
-//                return PhotoListEntity(total_page: total/10, page: page, photos: photos.map { $0.convertPhotoEntity() })
             }
             .map { $0.convertPhotoListEntity(term: "", page: page) }
             .mapError({ err in
@@ -77,7 +69,6 @@ class UnsplashAPIDataSource: UnsplashAPIInterface {
     func searchPhotos(page: Int, term: String) -> AnyPublisher<PhotoListEntity, TraceError> {
         Logger.track()
         return URLSession.shared.dataTaskPublisher(for: getURL(type: .search_photo, page: page, term: term))
-            .print()
             .map(\.data)
             .decode(type: UnsplashSearchedData.self, decoder: JSONDecoder())
             .tryMap { $0.convertPhotoListEntity(term: term, page: page) }
