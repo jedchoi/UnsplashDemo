@@ -25,6 +25,7 @@ final class UnsplashSearchListViewController: UIViewController {
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self
         setupNavigationController()
+        setCollectionViewLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +45,13 @@ final class UnsplashSearchListViewController: UIViewController {
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.searchController = searchController
     }
+    
+    private func setCollectionViewLayout() {
+        let layout = WaterFallLayout()
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        searchCollectionView.collectionViewLayout = layout
+    }
 }
 
 // MARK: - ViewProtocol
@@ -56,6 +64,9 @@ extension UnsplashSearchListViewController: UnsplashSearchListViewProtocol {
         self.photos = photos
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            if let layout = self.searchCollectionView.collectionViewLayout as? WaterFallLayout {
+                layout.update(photos: photos)
+            }
             self.searchCollectionView.reloadData()
         }
     }
@@ -125,22 +136,12 @@ extension UnsplashSearchListViewController: UICollectionViewDataSource {
     }
 }
 
-extension UnsplashSearchListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*CGFloat(photos[indexPath.item].getHeightRatio()))
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-}
-
 extension UnsplashSearchListViewController: PhotoDetailFocusDelegate {
     func updateFocus(index: Int) {
         Logger.track("Search ViewController updateFocus")
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.searchCollectionView.scrollToItem(at: IndexPath(item:index, section: 0), at: .bottom, animated: false)
+            self.searchCollectionView.scrollToItem(at: IndexPath(item:index, section: 0), at: .centeredVertically, animated: false)
         }
     }
 }

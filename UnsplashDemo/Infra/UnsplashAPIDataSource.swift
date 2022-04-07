@@ -17,7 +17,7 @@ enum UnsplashAPICommand {
         case .list_photo: 
             return ["page":String(page), "per_page":"10", "client_id":client_id]
         case .search_photo:
-            return ["page":String(page), "per_page":"10", "client_id":client_id, "query":term]
+            return ["page":String(page), "per_page":"30", "client_id":client_id, "query":term]
         }
     }
     
