@@ -54,6 +54,8 @@ final class MainTabHomeWireframe: MainTabHomeWireframeProtocol {
         let photoListWireFrame = UnsplashPhotoListWireFrame()
         photoListWireFrame.setup()
         let navigationController = UINavigationController(rootViewController: photoListWireFrame.configuredViewController())
+        navigationController.navigationBar.barTintColor = .black
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         return navigationController
     }
     
@@ -61,6 +63,8 @@ final class MainTabHomeWireframe: MainTabHomeWireframeProtocol {
         let searchListWireFrame = UnsplashSearchListWireFrame()
         searchListWireFrame.setup()
         let navigationController = UINavigationController(rootViewController: searchListWireFrame.configuredViewController())
+        navigationController.navigationBar.barTintColor = .black
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         return navigationController
     }
 }

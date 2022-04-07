@@ -57,7 +57,7 @@ final class UnsplashPhotoDetailViewController: UIViewController {
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.navigationBar.backIndicatorImage = UIImage.init(systemName: "xmark")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage.init(systemName: "xmark")
-        self.navigationController?.navigationBar.tintColor = .label
+        self.navigationController?.navigationBar.tintColor = .white
     }
 }
 
