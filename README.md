@@ -8,8 +8,13 @@
 - 사진 List의 마지막으로 이동하면 추가 사진을 서버로부터 load 함
 - Detail page에서 이전화면으로 돌아갈 때 마지막사진으로 Focus 이동
 
-# Demo
-![Image](https://github.com/jedchoi/UnsplashDemo/blob/main/UnsplashDemo.gif)
+# Demo 
+- Searching 탭을 선택하면 기본적으로 Flower를 검색하도록 구현함 (To Be : Default로 보여지는 Category list로 업데이트)
+
+|![Image](https://github.com/jedchoi/UnsplashDemo/blob/main/UnsplashPhotoListDemo.gif)|![Image](https://github.com/jedchoi/UnsplashDemo/blob/main/UnsplashSearchDemo.gif)|
+|---|---|
+|<div align=center> Photo List </div>|<div align=center> Searching </div>|
+
 
 # 적용기술
 - UIKit(StoryBoard), Combine
